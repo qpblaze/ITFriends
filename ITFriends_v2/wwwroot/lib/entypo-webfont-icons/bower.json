@@ -1,0 +1,29 @@
+{
+  "name": "entypo-webfont-icons",
+  "version": "1.0.0",
+  "authors": [
+    "Tomas Nikl <tomasnikl@icloud.com>"
+  ],
+  "description": "A packaged version of the entypo plus icon pack http://www.entypo.com/",
+  "keywords": [
+    "entypo",
+    "icons",
+    "entypo+",
+    "icomoon"
+  ],
+  "main": [
+    "style.css",
+    "fonts/entypo.eot",
+    "fonts/entypo.woff",
+    "fonts/entypo.ttf",
+    "fonts/entypo.svg"
+  ],
+  "ignore": [
+    "demo-files",
+    "demo-beauty.html",
+    "demo-icomoon.html",
+    "selection.json"
+  ],
+  "license": "CC BY-SA 4.0",
+  "homepage": "https://github.com/tomasnikl/entypo-webfont-icons"
+}
