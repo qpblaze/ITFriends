@@ -1,5 +1,5 @@
-﻿using ITFriends_v2.Models.AccountViewModels;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ITFriends_v2.Repositories
 {
@@ -35,6 +35,12 @@ namespace ITFriends_v2.Repositories
         /// </summary>
         /// <param name="account">The user that is going to be updated</param>
         void UpdateStudent(Account account);
+
+        /// <summary>
+        /// Register a user
+        /// </summary>
+        /// <param name="account">The user that is going to be registred</param>
+        Task RegisterAccount(Account account);
 
         /// <summary>
         /// Save changes to the database

@@ -1,38 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ITFriends_v2.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using ITFriends_v2.Services;
-using ITFriends_v2.Models;
+using AutoMapper;
+using ITFriends_v2.Models.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace ITFriends_v2
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder()
+                                    .SetBasePath(env.ContentRootPath)
+                                    .AddJsonFile("appsettings.json")
+                                    .AddJsonFile("secrets.json")
+                                    .AddUserSecrets<Startup>()
+                                    .AddEnvironmentVariables()
+                                    .Build();
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ITFriendsDataContext>
-            (
-                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-            );
+            //Add the secrets
+            services.AddOptions();
+            services.Configure<AppSecrets>(Configuration);
+            services.Configure<AppSecrets>(secrets =>
+            {
+                // Cloudinary secrets
+                secrets.Cloudinary.CloudName = Configuration["Cloudinary:cloud_name"];
+                secrets.Cloudinary.ApiKey = Configuration["Cloudinary:api_key"];
+                secrets.Cloudinary.ApiKey = Configuration["Cloudinary:api_secret"];
 
+                // SendGrid secrets
+                secrets.SendGrid.ApiKey = Configuration["SendGrid:api_key"];
+            });
+
+            // Add the data context
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+
+            services.AddDbContextPool<ITFriendsDataContext>(
+                options => options.UseSqlServer(connectionString));
+            
+            // Add custom services
             services.AddTransient<UploadImageService>();
+            services.AddTransient<IEmailSender, MessageSenderService>();
 
+            // Add the mvc framework
             services.AddMvc();
+
+            // Add auto mapper
+            services.AddAutoMapper(typeof(Startup));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

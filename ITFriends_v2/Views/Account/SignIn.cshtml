@@ -1,5 +1,5 @@
-﻿@page
-@model SignInModel
+﻿@model ITFriends_v2.SignInViewModel
+
 @{
     ViewData["Title"] = "Sign In";
 }
@@ -10,7 +10,7 @@
             <div class="center-align">
                 <div class="center-block">
                     <h4 class="title">You don't have an account yet?</h4><br />
-                    <a href="/Account/SignUp" class="waves-effect waves-light btn btn-default btn-large">Sign Up</a>
+                    <a asp-controller="Account" asp-action="SignUp" class="waves-effect waves-light btn btn-default btn-large">Sign Up</a>
                     <h6 class="subtitle">IT Friends is a new way to connect your friends with your everyday activities in a modern and fun way. Share some picture or some algorithms, it's your choice. That's what this is all about.</h6>
 
                 </div>
@@ -33,15 +33,15 @@
 
             <form method="post">
                 <div class="input-field">
-                    <input asp-for="Account.Email" class="validate" type="email">
-                    <label asp-for="Account.Email"></label>
+                    <input asp-for="Email" type="email">
+                    <label asp-for="Email"></label>
                 </div>
                 <div class="input-field">
-                    <input asp-for="Account.Password" class="validate" type="password">
-                    <label asp-for="Account.Password"></label>
+                    <input asp-for="Password" type="password">
+                    <label asp-for="Password"></label>
                 </div>
                 <div class="right">
-                    <a href="/Account/ForgotPassword">Forgot Password?</a><br />
+                    <a asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a><br />
                     <button type="submit" class="waves-effect waves-light btn btn-default btn-large">Sign In</button>
                 </div>
 

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace ITFriends_v2.Models.AccountViewModels
+namespace ITFriends_v2
 {
     public class ResetPasswordViewModel
     {

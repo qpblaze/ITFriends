@@ -1,19 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ITFriends_v2.Models.AccountViewModels
+namespace ITFriends_v2
 {
     public class Account
     {
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public Account()
-        {
-            ID = Guid.NewGuid().ToString();
-            Date = DateTime.Now;
-        }
-
         /// <summary>
         /// Identification key
         /// </summary>
@@ -33,7 +24,7 @@ namespace ITFriends_v2.Models.AccountViewModels
                 Role = (Roles)value;
             }
         }
-
+         
         /// <summary>
         /// User role that can be accessed anywhere
         /// </summary>
@@ -59,6 +50,16 @@ namespace ITFriends_v2.Models.AccountViewModels
         /// User's email address
         /// </summary>
         public string Email { get; set; }
+
+        /// <summary>
+        /// True if the email is verified, false if not
+        /// </summary>
+        public bool EmailVerified { get; set; }
+
+        /// <summary>
+        /// This key is send via Email when the user registers
+        /// </summary>
+        public string EmailVerificationKey { get; set; }
 
         /// <summary>
         /// User's first name
