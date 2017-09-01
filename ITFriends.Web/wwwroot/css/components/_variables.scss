@@ -1,0 +1,10 @@
+﻿$color-text: #727272;
+$color-text-dark: #373D3F;
+$color-text-light: #e3e6e8;
+$color-text-theme: #3498db;
+
+
+/* Colors */
+$primary-color: #3498db !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;

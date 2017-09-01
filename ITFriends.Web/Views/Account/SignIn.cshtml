@@ -1,0 +1,53 @@
+﻿@model ITFriends.Web.Models.AccountViewModels.SignInViewModel
+
+@{
+    ViewData["Title"] = "Sign In";
+}
+
+<div id="signIn">
+    <div class="row">
+        <div class="col m7 left-content valign-wrapper">
+            <div class="center-align">
+                <div class="center-block">
+                    <h4 class="title">You don't have an account yet?</h4><br />
+                    <a asp-controller="Account" asp-action="SignUp" class="waves-effect waves-light btn btn-default btn-large">Sign Up</a>
+                    <h6 class="subtitle">IT Friends is a new way to connect your friends with your everyday activities in a modern and fun way. Share some picture or some algorithms, it's your choice. That's what this is all about.</h6>
+
+                </div>
+                @*<div class="bottom">
+                    &copy; 2017 Copyright <a href="http://ursaciuc-adrian.azurewebsites.net/">Ursaciuc Adrian</a>
+                </div>*@
+               </div>
+        </div>
+        <div class="col m5 s12 right-content">
+            <div class="center-align">
+                <img src="~/images/logo.png" class="responsive-img" alt="logo" />
+                <h2 class="logo-text">IT Friends</h2>
+            </div>
+
+            <div class="welcome-text">
+                <h4>Sign In</h4>
+                <h6><i>Welcome back!</i></h6>
+                <br />
+            </div>
+
+            <form method="post">
+                <div class="input-field">
+                    <input class="validate" asp-for="Email" type="email">
+                    <label asp-for="Email"></label>
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="input-field">
+                    <input class="validate" asp-for="Password" type="password">
+                    <label asp-for="Password"></label>
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="right">
+                    <a asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a><br />
+                    <button type="submit" class="waves-effect waves-light btn btn-default btn-large">Sign In</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,0 @@
-{
-  "name": "asp.net",
-  "private": true,
-  "dependencies": {
-    "jQuery": "3.2.1",
-    "materialize": "v0.100.1",
-    "entypo-webfont-icons": "*"
-  }
-}

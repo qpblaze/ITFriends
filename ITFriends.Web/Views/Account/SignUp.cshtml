@@ -1,0 +1,66 @@
+﻿@model ITFriends.Web.Models.AccountViewModels.SignUpViewModel
+
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div id="signIn">
+    <div class="row">
+        <div class="col m7 left-content valign-wrapper">
+            <div class="center-align">
+                <div class="center-block">
+                    <h4 class="title">Already part of our world?</h4><br />
+                    <a asp-controller="Account" asp-action="SignIn" class="waves-effect waves-light btn btn-default btn-large">Sign In</a>
+                    <h6 class="subtitle">Don't let your friends down when they need you the most, stay connected with them, resolve some problems and, most importantly, speak with them - this is the key to success!</h6>
+                </div>
+                @*<div class="bottom">
+                        &copy; 2017 Copyright <a href="http://ursaciuc-adrian.azurewebsites.net/">Ursaciuc Adrian</a>
+                    </div>*@
+            </div>
+        </div>
+        <div class="col m5 s12 right-content">
+            <div class="center-align">
+                <img src="~/images/logo.png" class="responsive-img" alt="logo" />
+                <h2 class="logo-text">IT Friends</h2>
+            </div>
+
+            <div class="welcome-text">
+                <h4>Sign Up</h4>
+                <h6><i>Join our world!</i></h6>
+                <br />
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form method="post">
+                <div class="input-field">
+                    <input class="validate" asp-for="FirstName" type="text">
+                    <label asp-for="FirstName"></label>
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+                <div class="input-field">
+                    <input class="validate" asp-for="LastName" type="text">
+                    <label asp-for="LastName"></label>
+                    <span asp-validation-for="LastName"></span>
+                </div>
+                <div class="input-field">
+                    <input class="validate" asp-for="Email" type="email">
+                    <label asp-for="Email"></label>
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="input-field">
+                    <input class="validate" asp-for="Password" type="password">
+                    <label asp-for="Password"></label>
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="input-field">
+                    <input class="validate" asp-for="ConfirmPassword" type="password">
+                    <label asp-for="ConfirmPassword"></label>
+                    <span asp-validation-for="ConfirmPassword"></span>
+                </div>
+                <div class="right">
+                    <button type="submit" class="waves-effect waves-light btn btn-default btn-large">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
