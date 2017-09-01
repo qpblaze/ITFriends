@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace ITFriends.Web.Models.AccountViewModels
@@ -10,6 +11,7 @@ namespace ITFriends.Web.Models.AccountViewModels
         /// </summary>
         [Required]
         [EmailAddress]
+        [Remote(action: "VerifyEmail", controller: "Account")]
         public string Email { get; set; }
 
         /// <summary>

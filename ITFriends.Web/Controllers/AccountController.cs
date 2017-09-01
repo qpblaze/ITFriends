@@ -77,6 +77,17 @@ namespace ITFriends.Web.Controllers
             return RedirectToAction("SignIn");
         }
 
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> VerifyEmail(string email)
+        {
+            if (await _accountRepository.VerifyEmail(email) == true)
+            {
+                return Json(data: $"Email {email} is already in use.");
+            }
+
+            return Json(data: true);
+        }
+
         #endregion SignUp
 
         #region ResetPassword

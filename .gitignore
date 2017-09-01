@@ -261,4 +261,4 @@ __pycache__/
 *.pyc
 
 # Custom
-/secrets.json
+secrets.json

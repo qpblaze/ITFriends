@@ -79,7 +79,7 @@ namespace ITFriends.Web.Repositories
         public async Task<ResultStatus> RegisterAccount(Account account)
         {
 
-            if(await ValidEmail(account.Email) == false)
+            if(await VerifyEmail(account.Email) == false)
             {
                 return new ResultStatus(Status.Error, "This email already exists!");
             }
@@ -139,7 +139,7 @@ namespace ITFriends.Web.Repositories
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        private async Task<bool> ValidEmail(string email)
+        public async Task<bool> VerifyEmail(string email)
         {
             var account = await _dc.Accounts.FirstOrDefaultAsync(x => x.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
 

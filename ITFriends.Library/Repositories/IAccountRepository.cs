@@ -47,5 +47,12 @@ namespace ITFriends.Library.Repositories
         /// Save changes to the database
         /// </summary>
         void Save();
+
+        /// <summary>
+        /// Checks if an email already exists in the database
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        Task<bool> VerifyEmail(string email);
     }
 }
