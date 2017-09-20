@@ -8,6 +8,10 @@ using ITFriends.Web.Models.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using ITFriends.Library;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using System;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ITFriends.Web
 {
@@ -51,6 +55,22 @@ namespace ITFriends.Web
             // Add custom services
             services.AddTransient<UploadFileReository>();
             services.AddTransient<IEmailSenderRepository, MessageSenderService>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Add auth
+            services.AddAuthentication(options =>
+            {
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/sign-in";
+                options.LogoutPath = "/sign-out";
+                options.AccessDeniedPath = "/sign-in";
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+            });
 
             // Add the mvc framework
             services.AddMvc();
@@ -73,6 +93,8 @@ namespace ITFriends.Web
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

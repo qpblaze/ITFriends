@@ -79,7 +79,6 @@ namespace ITFriends.Library.Models
         /// </summary>
         public string Password { get; set; }
 
-
         #region Relationships
 
         // A user can have more keys

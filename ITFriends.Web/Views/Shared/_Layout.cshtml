@@ -7,9 +7,8 @@
 
     <!-- Styles -->
     <!-- Libs -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="~/lib/materialize/dist/css/materialize.min.css" rel="stylesheet" />
-    <link href="~/lib/entypo-webfont-icons/style.css" rel="stylesheet" />
 
     <!-- Custom -->
     <link href="~/css/site.min.css" rel="stylesheet" />
@@ -17,49 +16,39 @@
 <body>
 
     <!-- Navbar -->
-    @if (!(ViewContext.View.Path.Contains("Password") || ViewContext.View.Path.Contains("Sign")))
+    @if (!(ViewContext.View.Path.Contains("Password") || ViewContext.View.Path.Contains("Sign") || ViewContext.View.Path.Contains("Email")))
     {
         <div class="navbar-fixed">
-            <nav id="navbar" class="white" role="navigation" data-headroom>
+            <nav id="navbar" role="navigation" data-headroom>
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="#home" class="brand-logo hide-on-med-and-down"><img src="~/Images/ua-logo.png" alt="" /></a>
-
-                    <ul class="left hide-on-med-and-down">
-                        <li><a href="/Account/Profile"><i class="et-user left"></i>Profile</a></li>
-                        <li><a href="#about"><i class="et-home left"></i>Home</a></li>
-                        <li><a href="#resume"><i class="et-magnifying-glass left"></i>Search</a></li>
+                    <ul class="left">
+                        <li><a href="#about"><i class="ion-earth"></i></a></li>
+                        <li><a href="#resume"><i class="ion-search"></i></a></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a class="dropdown-button" data-activates="notifications" data-beloworigin="true"><i class="material-icons">notifications_active</i></a></li>
-                        <li><a href="#about"><i class="et-chat"></i></a></li>
-                        <li><a href="#resume"><i class="et-log-out"></i></a></li>
+                    <ul class="right">
+                        <li><a class="open-notifications"><i class="ion-android-notifications"></i></a></li>
+                        <li><a class="open-messages"><i class="ion-chatbox"></i></a></li>
+                        <li><a href="#resume"><i class="ion-ios-gear"></i></a></li>
                     </ul>
-
-                    <ul id="nav-mobile" class="side-nav">
-                        <li class="menu-profile">
-                            <div class="profile-inner">
-                                <div class="menu-container">
-                                    <img src="~/Images/bg3.jpg" alt="">
-                                </div>
-                                <h3>Ursaciuc Adrian</h3>
-                                <h5>Full Stack Developer</h5>
-                            </div>
-                        </li>
-                        <li><a href="#home"><i class="material-icons">home</i>Home</a></li>
-                        <li><a href="#about"><i class="material-icons">person</i>About Me</a></li>
-                        <li><a href="#resume"><i class="material-icons">assignment</i>Resume</a></li>
-                        <li><a href="#portfolio"><i class="material-icons">work</i>Portfolio</a></li>
-                        <li><a href="#testimonial"><i class="material-icons">chat_bubble</i>Testimonial</a></li>
-                        <li><a href="#contact"><i class="material-icons">send</i>Contact</a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 </div>
             </nav>
         </div>
 
-        <ul id="notifications" class="dropdown-content collection ">
-            @Html.Partial("PartialViews/_Notifications")
+        <ul class="notifications hiddendiv" style="display: none;">
+            <li>Notifications</li>
         </ul>
+        <ul class="messages hiddendiv" style="display: none;">
+            <li>Messages</li>
+        </ul>
+
+        @*<ul id="notifications" class="dropdown-content collection ">
+            <li class="collection-title">
+                <div class="center-align">
+                    <span>Notifications</span>
+                </div>
+            </li>
+            @Html.Partial("PartialViews/_Notifications")
+        </ul>*@
     }
 
     <!-- Page content -->
@@ -75,8 +64,8 @@
     <script src="~/lib/jquery.validate.hooks.es5.min.js"></script>
 
     <!-- Custom -->
-    <script src="~/js/init.es5.min.js"></script>
-    <script src="~/js/scripts.es5.min.js"></script>
+    <script src="~/js/init.min.js"></script>
+    <script src="~/js/scripts.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -26,5 +26,11 @@
     "inputFiles": [
       "wwwroot/lib/jquery/dist/core.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/init.min.js",
+    "inputFiles": [
+      "wwwroot/js/init.js"
+    ]
   }
 ]

@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     // Materialize
     $(function () {
-        $('.button-collapse').sideNav();
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
     });
@@ -15,8 +14,14 @@
         $(element).removeClass('valid').addClass('error');
     });
 
-    //
+    // Side menus 
+    $('.open-notifications').click(function () {
+        $('.notifications').animate({ 'width': 'toggle' });
+    })
 
+    $('.open-messages').click(function () {
+        $('.messages').animate({ 'width': 'toggle' });
+    })
 
 });
 

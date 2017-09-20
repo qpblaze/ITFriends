@@ -1,7 +1,5 @@
 ﻿using ITFriends.Library.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ITFriends.Library
 {
@@ -23,6 +21,7 @@ namespace ITFriends.Library
         {
             modelBuilder.Entity<Account>().ToTable(nameof(Accounts));
             modelBuilder.Entity<Key>().ToTable(nameof(Keys));
+
         }
     }
 }

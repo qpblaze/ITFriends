@@ -14,28 +14,7 @@ namespace ITFriends.Library.Models
         /// The key that is stored (usually a Guid)
         /// </summary>
         public string SecretKey { get; set; }
-
-        /// <summary>
-        /// User's key id which is store in database
-        /// </summary>
-        public virtual int KeyTypeID
-        {
-            get
-            {
-                return (int)this.KeyType;
-            }
-            set
-            {
-                KeyType = (KeyTypes)value;
-            }
-        }
-
-        /// <summary>
-        /// User key that can be accessed anywhere
-        /// </summary>
-        [NotMapped]
-        public KeyTypes KeyType { get; set; }
-
+        
         #region Relationships
 
         // A key can only be assigned to one user

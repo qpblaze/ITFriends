@@ -15,6 +15,11 @@ namespace ITFriends.Web.Models
             // SignUpViewModel - Account
             CreateMap<SignUpViewModel, Account>();
             CreateMap<Account, SignUpViewModel>();
+
+            // ResetPasswordViewModel - Account
+            CreateMap<ResetPasswordViewModel, Account>();
+            CreateMap<Account, ResetPasswordViewModel>();
+
         }
     }
 }
